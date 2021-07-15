@@ -45,30 +45,15 @@ def help_markup(modules):
     return markup
 
 
-STICKERS = (
-    "CAACAgUAAxkBAAJOGmBeli95P073FKVkgc4esfKE4UlXAAIOAgACyavAVkbLMIidWYdyHgQ",
-    "CAACAgUAAxkBAAJOG2BeljABwlCfwzHT1gzyiciBri6_AAIsAgACXBPBVgpGQRz-1qmlHgQ",
-    "CAACAgUAAxkBAAJOHGBeljOJ35CQNnkpnVcgRoHuJX6DAAL3AQACN8TBVm1PIART01cWHgQ",
-    "CAACAgUAAxkBAAJOHWBeljXW9QzYQ51gpCjHZHCF5Ui6AAJ7AgAC3zDBVo2xenp7JYhAHgQ",
-    "CAACAgUAAxkBAAJOHmBeljjU0_FT_QpdUUJBqVUC0nfJAAKYAgACJ_jBVvntHY_8WF27HgQ",
-    "CAACAgUAAxkBAAJOH2BeljrV68mPLu8_6n4edT20Q3IQAAJ9AgACq3LBVmLuZuNPlvkfHgQ",
-    "CAACAgUAAxkBAAJOIGBeljttuniUPykRtzkSZj3SRwKJAAI7AgACNm_BVp8TCkE6ZqCoHgQ",
-    "CAACAgUAAxkBAAJOIWBelj-P_2vtVqtkF2OMlVN3M0N4AAK3AQACSm3BVkXF2voraS2tHgQ",
-    "CAACAgUAAxkBAAJOImBelkJxUBm2rL1iPfMZfk-_9DaOAALrAgAC4T3BVniopXQVsZ4KHgQ",
-    "CAACAgUAAxkBAAJOI2BelkMO0AX_wtAc7hUZz1NixuMlAAKEAwACY4TAViVuNLTBmmkgHgQ",
-)
-
-
-@register(cmds="start", no_args=True, only_groups=True, filters=Filters.user(OWNER_ID))
+@register(cmds="start", no_args=True, only_groups=True)
 @disableable_dec("start")
 @get_strings_dec("pm_menu")
 async def start_group_cmd(message, strings):
     await message.reply(strings["start_hi_group"])
 
 
-@register(cmds="start", no_args=True, only_pm=True, filters=Filters.user(OWNER_ID))
+@register(cmds="start", no_args=True, only_pm=True)
 async def start_cmd(message):
-    await message.reply_sticker(random.choice(STICKERS))
     await get_start_func(message)
 
 
@@ -121,7 +106,7 @@ async def back_btn(event):
     await get_start_func(event, edit=True)
 
 
-@register(cmds="help", only_pm=True, filters=Filters.user=(OWNER_ID))
+@register(cmds="help", only_pm=True)
 @disableable_dec("help")
 @get_strings_dec("pm_menu")
 async def help_cmd(message, strings):
@@ -130,7 +115,7 @@ async def help_cmd(message, strings):
     await message.reply(strings["help_header"], reply_markup=button)
 
 
-@register(cmds="help", only_groups=True, filters=Filters.user(OWNER_ID))
+@register(cmds="help", only_groups=True)
 @disableable_dec("help")
 @get_strings_dec("pm_menu")
 async def help_cmd_g(message, strings):
