@@ -26,6 +26,7 @@ from aiogram.utils.exceptions import MessageNotModified
 
 from DaisyX.decorator import register
 from DaisyX.modules.utils.disable import disableable_dec
+from DaisyX import OWNER_ID, SUDO_USERS, tbot
 
 from . import MOD_HELP
 from .language import select_lang_keyboard
@@ -58,14 +59,14 @@ STICKERS = (
 )
 
 
-@register(cmds="start", no_args=True, only_groups=True)
+@register(cmds="start", no_args=True, only_groups=True, filters=Filters.user=(OWNER_ID))
 @disableable_dec("start")
 @get_strings_dec("pm_menu")
 async def start_group_cmd(message, strings):
     await message.reply(strings["start_hi_group"])
 
 
-@register(cmds="start", no_args=True, only_pm=True)
+@register(cmds="start", no_args=True, only_pm=True filters=Filters.user=(OWNER_ID)))
 async def start_cmd(message):
     await message.reply_sticker(random.choice(STICKERS))
     await get_start_func(message)
@@ -129,7 +130,7 @@ async def help_cmd(message, strings):
     await message.reply(strings["help_header"], reply_markup=button)
 
 
-@register(cmds="help", only_groups=True)
+@register(cmds="help", only_groups=True filters=Filters.user=(OWNER_ID)))
 @disableable_dec("help")
 @get_strings_dec("pm_menu")
 async def help_cmd_g(message, strings):
@@ -149,7 +150,7 @@ async def helpmenu_callback(query, callback_data=None, **kwargs):
     msg = f"Help for <b>{mod}</b> module:\n"
     msg += f"{MOD_HELP[mod]}"
     button = InlineKeyboardMarkup().add(
-        InlineKeyboardButton(text="🏃‍♂️ Back", callback_data="get_help")
+        InlineKeyboardButton(text="Back", callback_data="get_help")
     )
     with suppress(MessageNotModified):
         await query.message.edit_text(
