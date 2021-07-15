@@ -17,7 +17,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import random
 from contextlib import suppress
 
 from aiogram.types.inline_keyboard import InlineKeyboardButton, InlineKeyboardMarkup
