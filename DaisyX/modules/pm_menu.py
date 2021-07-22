@@ -70,9 +70,7 @@ async def get_start_func(message, strings, edit=False):
     )
     buttons.add(
         InlineKeyboardButton(strings["btn_channel"], url="https://t.me/mizotginfotel"),
-        InlineKeyboardButton(
-            strings["btn_group"], url="https://t.me/mizotelegram"
-        ),
+        InlineKeyboardButton(strings["btn_group"], url="https://t.me/mizotelegram"),
     )
     buttons.add(
         InlineKeyboardButton(
