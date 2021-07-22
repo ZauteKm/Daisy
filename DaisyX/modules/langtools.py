@@ -16,13 +16,8 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import json
 
-import requests
 from google_trans_new import google_translator
-from PyDictionary import PyDictionary
-from telethon import *
-from telethon.tl.types import *
 
 from DaisyX.services.events import register
 
