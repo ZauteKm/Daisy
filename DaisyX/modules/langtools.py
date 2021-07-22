@@ -52,13 +52,3 @@ async def _(event):
         await event.reply(output_str)
     except Exception as exc:
         await event.reply(str(exc))
-
-
-__help__ = """
- - /tr <i>language code</i> or /tr <i>language code</i> , <i>text</i>: Type in reply to a message or (/tr <i>language code</i> , <i>text</i>) to get it's translation in the destination language
- - /define <i>text</i>: Type the word or expression you want to search\nFor example /define lesbian
- - /spell: while replying to a message, will reply with a grammar corrected version
- - /forbesify: Correct your punctuations better use the advanged spell module
- - /synonyms <i>word</i>: Find the synonyms of a word
- - /antonyms <i>word</i>: Find the antonyms of a word
-"""
