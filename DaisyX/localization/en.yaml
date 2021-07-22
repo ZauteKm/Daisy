@@ -197,7 +197,7 @@ STRINGS:
     back: "Back"
 
     # /help
-    help_header: "I am MizoTGBot!.</b>"
+    help_header: "I am <b>MizoTGBot!.</b>"
     click_btn: Click here
 
   disable:
