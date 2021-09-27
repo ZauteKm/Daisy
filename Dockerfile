@@ -1,22 +1,8 @@
-# Python Based Docker
-FROM python:latest
-
-# Installing Packages
-RUN apt update && apt upgrade -y
-RUN apt install git curl python3-pip ffmpeg -y
-
-# Updating Pip Packages
-RUN pip3 install -U pip
-
-# Copying Requirements
-COPY requirements.txt /requirements.txt
-
-# Installing Requirements
-RUN cd /
-RUN pip3 install -U -r requirements.txt
-RUN mkdir /Daisy
-WORKDIR /Daisy
-COPY start.sh /start.sh
-
-# Running Daisy
-CMD ["/bin/bash", "/start.sh"]
+FROM python:3.9
+WORKDIR .
+ENV PYTHONUNBUFFERED=1
+COPY requirements.txt .
+COPY deploy.sh .
+RUN bash deploy.sh
+COPY . .
+CMD ["python3", "-m", "DaisyX"]
