@@ -1,5 +1,5 @@
 echo "
-*********** STARTING DEPLOY ***********
+*********** STATING DEPLOY ***********
 DAISYX v2 -Base Aiogram
 (C) 2020-2021 by @TEAMDAISYX
 Support Chat is @DAISYSUPPORT_OFFICIAL.
